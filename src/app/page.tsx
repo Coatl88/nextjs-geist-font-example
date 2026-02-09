@@ -329,9 +329,9 @@ export default function Home() {
                       <div className="space-y-2">
                         <div className="flex justify-between text-sm">
                           <span>Confianza de Medición:</span>
-                          <span>{detectionStatus === "detecting" || detectionStatus !== "idle" ? "95%" : "0%"}</span>
+                          <span>{detectionStatus !== "idle" ? "95%" : "0%"}</span>
                         </div>
-                        <Progress value={detectionStatus === "detecting" || detectionStatus !== "idle" ? 95 : 0} />
+                        <Progress value={detectionStatus !== "idle" ? 95 : 0} />
                       </div>
                     </div>
                   </TabsContent>
