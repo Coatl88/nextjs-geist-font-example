@@ -13,7 +13,7 @@ export default function Home() {
   const [leftCameraActive, setLeftCameraActive] = useState(false);
   const [rightCameraActive, setRightCameraActive] = useState(false);
   const [cableHeight, setCableHeight] = useState(0);
-  const [heightThreshold] = useState(2.5); // mm
+  const heightThreshold = 2.5; // mm - Maximum allowed cable height
   const [detectionStatus, setDetectionStatus] = useState<"idle" | "detecting" | "pass" | "fail">("idle");
   const [baseline, setBaseline] = useState([65]); // mm - distance between cameras
   const [focalLength, setFocalLength] = useState([3.6]); // mm
@@ -212,8 +212,7 @@ export default function Home() {
                         {/* Depth visualization */}
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                           <div className="w-32 h-32 border-4 border-white/30 rounded-lg bg-white/10">
-                            <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 w-2 h-8 bg-gradient-to-t from-yellow-400 to-red-500 shadow-lg" 
-                                 style={{filter: 'drop-shadow(0 0 10px rgba(255, 200, 0, 0.8))'}} />
+                            <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 w-2 h-8 bg-gradient-to-t from-yellow-400 to-red-500 shadow-lg [filter:drop-shadow(0_0_10px_rgba(255,200,0,0.8))]" />
                             {detectionStatus !== "idle" && (
                               <div className="absolute -right-16 top-1/4 bg-black/75 px-2 py-1 rounded text-xs text-white whitespace-nowrap">
                                 {cableHeight.toFixed(2)}mm
@@ -368,7 +367,7 @@ export default function Home() {
                   se calcula la profundidad mediante triangulación.
                 </p>
                 <p className="pt-2 font-mono text-xs bg-muted p-2 rounded">
-                  Z = (f × B) / d
+                  Z = (f &times; B) / d
                   <br />
                   <span className="text-xs">donde f=focal, B=baseline, d=disparidad</span>
                 </p>
